@@ -1,0 +1,68 @@
+﻿@page "UserList"
+@model IndexModel
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<a asp-page="Create">Добавить</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ид
+            </th>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Редактировать
+            </th>
+            <th>
+                Удалить
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.UserList)
+        {
+            <tr>
+                <td>
+                    @user.Id
+                </td>
+                <td>
+                    @user.FullName
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@user.Id">Отредактируй меня</a>
+                </td>
+                <td>
+                    <form method="post">
+                        <button asp-page-handler="Delete" class="btn btn-danger btn-remove-user" asp-route-id="@user.Id">Удали меня</button>
+                    </form>
+                    @*<button class="btn btn-danger btn-remove-user" data-user-id="@user.Id">Удалить</button>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<script>
+    window.onload = function () {
+        $('.btn-remove-user').click(function () {
+            let userId = $(this).data('user-id');
+
+            $.ajax({
+                url: '/UserList',
+                data: {id: userId},
+                type: 'POST',
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Все плохо, я не смог удалить!');
+                }
+            })
+        });
+    }
+</script>
+*@

@@ -1,0 +1,29 @@
+﻿@page "{id:int}"
+@model WebApplication3.Pages.Users.EditModel
+@{
+    ViewData["Title"] = "Редактировать пользователя";
+}
+
+<form method="post" asp-page-handler="onpost">
+    <input asp-for="UserVM.Id" hidden readonly/>
+
+    <div>
+        <label asp-for="UserVM.LastName"></label>
+        <input asp-for="UserVM.LastName" />
+        <span asp-validation-for="UserVM.LastName"></span>
+    </div>
+
+    <div>
+        <label asp-for="UserVM.FirstName"></label>
+        <input asp-for="UserVM.FirstName" />
+        <span asp-validation-for="UserVM.FirstName"></span>
+    </div>
+
+    <div>
+        <label asp-for="UserVM.Patronymic"></label>
+        <input asp-for="UserVM.Patronymic" />
+        <span asp-validation-for="UserVM.Patronymic"></span>
+    </div>
+
+    <button>Сохранить</button>
+</form>

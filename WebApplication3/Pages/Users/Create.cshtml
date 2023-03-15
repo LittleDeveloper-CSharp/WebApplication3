@@ -1,0 +1,27 @@
+﻿@page
+@model WebApplication3.Pages.Users.CreateModel
+@{
+    ViewData["Title"] = "Создать пользователя";
+}
+
+<form method="post" asp-page-handler="onpost">
+    <div>
+        <label asp-for="UserVM.LastName"></label>
+        <input asp-for="UserVM.LastName" />
+        <span asp-validation-for="UserVM.LastName"></span>
+    </div>
+
+    <div>
+        <label asp-for="UserVM.FirstName"></label>
+        <input asp-for="UserVM.FirstName" />
+        <span asp-validation-for="UserVM.FirstName"></span>
+    </div>
+
+    <div>
+        <label asp-for="UserVM.Patronymic"></label>
+        <input asp-for="UserVM.Patronymic" />
+        <span asp-validation-for="UserVM.Patronymic"></span>
+    </div>
+
+    <button>Сохранить</button>
+</form>
